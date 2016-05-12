@@ -1,3 +1,12 @@
+//----------------------------------------------------------------------------------
+//
+// Project 10.2 from "Learning C with Pebble"
+// 
+// Mike Jipping, May 2016
+//
+// Adapted from an original Snake game by Nick Reynolds for the Pebble Classic smartwatch
+// https://github.com/thenickreynolds/pebblesnake
+
 #include <pebble.h>
 
 #define COLOR_FOREGROUND GColorWhite
