@@ -208,35 +208,24 @@ void tick_game() {
     
   // Adjust snake travel if in autopilot mode
   // Note the COOL recursive call to tick_game()!!!
+  int turn = false;    
   if (game_mode == AUTOPILOTMODE) {
     if (snake.body[0].x == 0 && snake.direction == LEFT) {  // too far left
-        change_snake_direction(CLOCKWISE);
-        if (snake.length < SNAKE_AUTOPILOT_MAX_LENGTH) {
-          snake.length++;
-          snake.body[snake.length-1] = old_position;
-        }
-        tick_game();
+        turn = true;
     } else if (snake.body[0].x == WIDTH-1 && snake.direction == RIGHT) {  // too far right
-        change_snake_direction(CLOCKWISE);
-        if (snake.length < SNAKE_AUTOPILOT_MAX_LENGTH) {
-          snake.length++;
-          snake.body[snake.length-1] = old_position;
-        }
-        tick_game();        
+        turn = true;
     } else if (snake.body[0].y == 0 && snake.direction == UP) {  // too far up
-        change_snake_direction(CLOCKWISE);
-        if (snake.length < SNAKE_AUTOPILOT_MAX_LENGTH) {
-          snake.length++;
-          snake.body[snake.length-1] = old_position;
-        }
-        tick_game();        
+        turn = true;
     } else if (snake.body[0].y == HEIGHT-1 && snake.direction == DOWN) {  // too far down
-        change_snake_direction(CLOCKWISE);
-        if (snake.length < SNAKE_AUTOPILOT_MAX_LENGTH) {
-          snake.length++;
-          snake.body[snake.length-1] = old_position;
-        }
-        tick_game();        
+        turn = true;
+    }
+    if (turn) {
+      change_snake_direction(direction);
+      if (snake.length < SNAKE_AUTOPILOT_MAX_LENGTH) {
+        snake.length++;
+        snake.body[snake.length-1] = old_position;
+      }
+      tick_game();
     }
   }
 
