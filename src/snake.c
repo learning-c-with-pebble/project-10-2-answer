@@ -220,7 +220,7 @@ void tick_game() {
         turn = true;
     }
     if (turn) {
-      change_snake_direction(direction);
+      change_snake_direction(snake.direction);
       if (snake.length < SNAKE_AUTOPILOT_MAX_LENGTH) {
         snake.length++;
         snake.body[snake.length-1] = old_position;
